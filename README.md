@@ -6,3 +6,4 @@ Outputs: Route, types of holds, distance between holds, grade of route, angle of
 real world applications: mountain rescue and leisure climbing
 optional extension: to follow the ironspider theme, it gives the person using it a spiderman skin when it recognizes hands
 language used: Python for vision libraries
+hardware used: smsung gear VR
