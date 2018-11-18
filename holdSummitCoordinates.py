@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import csv
 import matplotlib.pyplot as plt
 
 #set the rockwall to img
@@ -35,4 +36,8 @@ for c in contours:
     cv2.circle(BWblur, extTop, 8, (255, 0, 0), -1)
 cv2.imshow("hey",BWblur)
 print(coordinates)
+with open('coordinatesList.csv', mode='w') as coordinatesList:
+    coordinatesList = csv.writer(coordinatesList, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    for i in range(0,len(coordinates)):
+        coordinatesList.writerow(coordinates[i])
 plt.show()
