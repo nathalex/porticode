@@ -2,10 +2,12 @@ import numpy as np
 import cv2
 import csv
 import matplotlib.pyplot as plt
+from climberInputs import scale
 
 #set the rockwall to img
 img = cv2.imread('rockWallExample.jpg')
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+cv2.imwrite('rockWallHSV.png',img_hsv)
 
 hsv_color_high = np.asarray([27,95,79])
 hsv_color_low = np.asarray([159,226,224])
