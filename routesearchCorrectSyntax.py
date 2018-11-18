@@ -1,9 +1,10 @@
 import random
 import csv
+from climberInputs import *
 
 govind = []
-height = 200
-legLength = height-20
+height = climberInputs.height
+legLength = climberInputs.legLength
 LeftFoot = (0, 0)
 RightFoot = (0, 0)
 LeftHand = (0,0)
@@ -16,7 +17,7 @@ def csv_dict_writer(path, fieldnames, data):
             writer.writerow(row)
 
 def get_reach():
-    reach = height*3
+    reach = 1.5*height
     return reach
 
 def distance(x, y):
