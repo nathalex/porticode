@@ -152,11 +152,15 @@ while atTop == False:
     govindlol = (LeftFoot, RightFoot, LeftHand, RightHand)
     govind.append(govindlol)
 read_list = []
+stepsTuple = (steps*4, 0)
 with open('optimalSolution.csv', 'w') as csvfile:
     writefile= csv.writer(csvfile, delimiter=',',quotechar='"', quoting=csv.QUOTE_MINIMAL)
     for i in range (0,len(govind)):
-        for y in range (0,4):
-            writefile.writerow(govind[i][y])
+        if i == 0:
+            writefile.writerow(stepsTuple)
+        else:
+            for y in range (0,4):
+                writefile.writerow(govind[i][y])
 #fieldnames = govind[0]
 #for values in fieldnames[1:]:
 #    inner_dict = dict(zip(fieldnames, values))
