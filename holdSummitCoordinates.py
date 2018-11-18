@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import csv
 import matplotlib.pyplot as plt
-from climberInputs import scale
+import climberInputs
 
 #set the rockwall to img
 img = cv2.imread('rockWallExample.jpg')
