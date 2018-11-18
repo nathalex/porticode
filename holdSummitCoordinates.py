@@ -6,14 +6,15 @@ import climberInputs
 
 #set the rockwall to img
 img = cv2.imread('rockWallExample.jpg')
-img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+if climberInputs.color == "green":
+    color_high = np.asarray([60,160,60])
+    color_low = np.asarray([185,255,185])
+elif climberInputs.color == "red":
+    color_high = np.asarray([57,50,140])
+    color_low = np.asarray([107,100,255])
 
-hsv_color_high = np.asarray([27,95,79])
-hsv_color_low = np.asarray([159,226,224])
-
-#blurs the holds so they become whole blobs
-mask = cv2.inRange(img_hsv,hsv_color_high,hsv_color_low)
-#plt.imshow(mask, cmap='gray')
+mask = cv2.inRange(img,color_high,color_low)
+mask = cv2.medianBlur(mask,5)
 blur = cv2.blur(mask,(15,15))
 #plt.imshow(blur, cmap='gray')
 #sets back to binary so the contour can find the edges
