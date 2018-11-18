@@ -152,7 +152,7 @@ while atTop == False:
     govindlol = (LeftFoot, RightFoot, LeftHand, RightHand)
     govind.append(govindlol)
 read_list = []
-with open('govindread.csv', 'w') as csvfile:
+with open('optimalSolution.csv', 'w') as csvfile:
     writefile= csv.writer(csvfile, delimiter=',',quotechar='"', quoting=csv.QUOTE_MINIMAL)
     for i in range (0,len(govind)):
         for y in range (0,4):
