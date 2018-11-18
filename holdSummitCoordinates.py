@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 img = cv2.imread('rockWallExample.jpg')
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-hsv_green_high = np.asarray([27,95,79])
-hsv_green_low = np.asarray([159,226,224])
+hsv_color_high = np.asarray([27,95,79])
+hsv_color_low = np.asarray([159,226,224])
 
 #blurs the holds so they become whole blobs
-mask = cv2.inRange(img_hsv,hsv_green_high,hsv_green_low)
+mask = cv2.inRange(img_hsv,hsv_color_high,hsv_color_low)
 #plt.imshow(mask, cmap='gray')
 blur = cv2.blur(mask,(15,15))
 #plt.imshow(blur, cmap='gray')
@@ -21,12 +21,14 @@ plt.imshow(BWblur, cmap='gray')
 im2, contours, hierarchy = cv2.findContours(BWblur,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 BWblur = cv2.cvtColor(BWblur, cv2.COLOR_GRAY2BGR)
 BWblur = cv2.cvtColor(BWblur, cv2.COLOR_BGR2HSV)
+scale = 2
 coordinates = []
 for c in contours:
     #finds the coordinates summit of the contour of the hold
     extTop = tuple(c[c[:, :, 1].argmin()][0])
     print(extTop)
-    coordinates.append(extTop)
+    coordMax = tuple(scale*c[c[:, :, 1].argmin()][0])
+    coordinates.append(coordMax)
     peri = cv2.arcLength(c,True)
     approx = cv2.approxPolyDP(c,0.02*peri,True)
     cv2.drawContours(BWblur, [approx], -1, (0,255,0), 3)
