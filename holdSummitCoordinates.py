@@ -39,6 +39,7 @@ cv2.imshow("hey",BWblur)
 print(coordinates)
 with open('coordinatesList.csv', mode='w') as coordinatesList:
     coordinatesList = csv.writer(coordinatesList, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    coordinatesList.writerow((len(coordinates),0))
     for i in range(0,len(coordinates)):
         coordinatesList.writerow(coordinates[i])
 plt.show()
